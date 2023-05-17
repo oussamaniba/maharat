@@ -38,6 +38,7 @@ dependencies:
   url_strategy: ^0.2.0
   rename: ^2.1.1
   mime: ^1.0.4
+  flutter_otp_text_field: ^1.1.1
 
 dev_dependencies:
   flutter_test:

@@ -17,10 +17,11 @@ class OnboardingScreen extends StackedView<OnboardingViewModel> {
     Widget? child,
   ) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: OnBoardingHolder(
         onBoardings: OnBoardingItemModel.onboardItems,
         onFinishOrIgnore: () {
-          viewModel.routes.replace(const AuthenticationRoute());
+          viewModel.routes.replace(AuthenticationRootRoute());
         },
       ),
     );

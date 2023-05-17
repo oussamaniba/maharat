@@ -31,7 +31,8 @@ class OnBoardingItemModel {
           title: "تابع..",
           description: "مستوى طفلك مع اختبارات مهارة",
           boardText: "المجموعات",
-          boardRightPosition: .32,
+          boardTopPosition: .173,
+          boardRightPosition: .44,
           image: "lib/core/assets/onboarding_girl.svg",
         )
       ];
