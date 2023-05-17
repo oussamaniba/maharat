@@ -9,15 +9,51 @@ class AppRoutes extends $AppRoutes {
       AutoRoute(
         page: OnboardingRoute.page,
         path: "/onBoarding",
-        initial: true,
       ),
       AutoRoute(
         page: HomeRoute.page,
         path: "/home",
       ),
       AutoRoute(
-        page: AuthenticationRoute.page,
-        path: "/authentication",
+        page: AuthenticationRootRoute.page,
+        path: "/authRoot",
+        initial: true,
+        children: [
+          AutoRoute(
+            page: AuthenticationRoute.page,
+            path: "login",
+          ),
+          AutoRoute(
+            page: ForgotPasswordRoute.page,
+            path: "recover",
+          ),
+          AutoRoute(
+            page: OtpRoute.page,
+            path: "otp",
+          ),
+          AutoRoute(
+            page: ConfirmPasswordRoute.page,
+            path: "confirm",
+          ),
+        ],
+      ),
+      AutoRoute(
+        page: RegistrationRoute.page,
+        path: "/registration",
+        children: [
+          AutoRoute(
+            page: FirstStepRoute.page,
+            path: "first",
+          ),
+          AutoRoute(
+            page: SecondStepRoute.page,
+            path: "second",
+          ),
+          AutoRoute(
+            page: ThirdStepRoute.page,
+            path: "third",
+          ),
+        ],
       ),
     ];
   }
