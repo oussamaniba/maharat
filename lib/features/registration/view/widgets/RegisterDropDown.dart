@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:country_calling_code_picker/country.dart';
+import 'package:maharat/core/utils/global_functions.dart';
 import 'package:maharat/core/utils/sizespec_utils.dart';
 
 class RegisterDropDown extends StatefulWidget {
@@ -17,6 +19,8 @@ class RegisterDropDown extends StatefulWidget {
 }
 
 class _RegisterDropDownState extends State<RegisterDropDown> {
+  Country? selected;
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,7 +42,10 @@ class _RegisterDropDownState extends State<RegisterDropDown> {
         mainAxisSize: MainAxisSize.max,
         children: [
           TextButton(
-            onPressed: () {},
+            onPressed: () async {
+              selected = await showBottomSheetCountries(context, false);
+              controller.text = selected!.name;
+            },
             child: Icon(
               Icons.arrow_drop_down_rounded,
               size: 50,
@@ -50,6 +57,8 @@ class _RegisterDropDownState extends State<RegisterDropDown> {
               onChanged: widget.onText,
               textDirection: TextDirection.rtl,
               keyboardType: TextInputType.number,
+              controller: controller,
+              enabled: false,
               inputFormatters: <TextInputFormatter>[
                 FilteringTextInputFormatter.digitsOnly
               ],

@@ -1,3 +1,5 @@
+import 'package:country_calling_code_picker/country.dart';
+import 'package:country_calling_code_picker/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:maharat/core/utils/sizespec_utils.dart';
@@ -17,6 +19,21 @@ class AuthNumber extends StatefulWidget {
 }
 
 class _AuthNumberState extends State<AuthNumber> {
+  String? countryCode;
+
+  @override
+  void initState() {
+    super.initState();
+    loadCountryCode();
+  }
+
+  Future loadCountryCode() async {
+    Country country = await getDefaultCountry(context);
+    setState(() {
+      countryCode = country.callingCode;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,9 +55,15 @@ class _AuthNumberState extends State<AuthNumber> {
         mainAxisSize: MainAxisSize.max,
         children: [
           TextButton(
-            onPressed: () {},
+            onPressed: () async => await showCountryPickerSheet(
+              context,
+            ).then((value) {
+              setState(() {
+                countryCode = value?.callingCode;
+              });
+            }),
             child: Text(
-              "+20",
+              countryCode ?? "--",
               style: TextStyle(
                 color: Colors.red[300],
                 fontSize: 15.0,
@@ -50,7 +73,8 @@ class _AuthNumberState extends State<AuthNumber> {
           ),
           Expanded(
             child: TextFormField(
-              onChanged: widget.onText,
+              onChanged: (v) => widget.onText("$countryCode$v"),
+              maxLength: 9,
               textDirection: TextDirection.rtl,
               keyboardType: TextInputType.number,
               inputFormatters: <TextInputFormatter>[
@@ -60,6 +84,10 @@ class _AuthNumberState extends State<AuthNumber> {
                 border: InputBorder.none,
                 hintText: widget.placeHolder,
                 hintTextDirection: TextDirection.rtl,
+                counterStyle: const TextStyle(
+                  height: double.minPositive,
+                ),
+                counterText: "",
                 hintStyle: const TextStyle(
                   color: Colors.grey,
                 ),

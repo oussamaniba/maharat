@@ -185,6 +185,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  country_calling_code_picker:
+    dependency: "direct main"
+    description:
+      name: country_calling_code_picker
+      sha256: b9afd68e79f38953c463e8ea104533c1b9fc7b37e0948b501f9a7ad6a9a830a5
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   crypto:
     dependency: transitive
     description:
@@ -270,6 +278,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  flutter_sim_country_code:
+    dependency: transitive
+    description:
+      name: flutter_sim_country_code
+      sha256: fd6233ad01b811f5d2845c5b1c18120488417f2882a84df602daa65324e8371e
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.2"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -737,10 +753,10 @@ packages:
     dependency: "direct main"
     description:
       name: stacked
-      sha256: "1ba751ce480f25766cdc1e08fbb4b7960ac45e08bbede110a12d40c41b2c4eba"
+      sha256: "755a566f2b7bed431523ec669372702c39079e52b901649181b031d8b24f3278"
       url: "https://pub.dev"
     source: hosted
-    version: "3.2.6"
+    version: "3.2.7"
   stacked_shared:
     dependency: transitive
     description:
@@ -833,10 +849,10 @@ packages:
     dependency: transitive
     description:
       name: url_launcher_android
-      sha256: "7aac14be5f4731b923cc697ae2d42043945076cd0dbb8806baecc92c1dc88891"
+      sha256: "22f8db4a72be26e9e3a4aa3f194b1f7afbc76d20ec141f84be1d787db2155cbd"
       url: "https://pub.dev"
     source: hosted
-    version: "6.0.33"
+    version: "6.0.31"
   url_launcher_ios:
     dependency: transitive
     description:

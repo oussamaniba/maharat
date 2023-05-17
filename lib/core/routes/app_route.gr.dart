@@ -11,48 +11,78 @@
 import 'package:auto_route/auto_route.dart' as _i12;
 import 'package:flutter/material.dart' as _i13;
 import 'package:maharat/features/authentication/view/AuthenticationRootScreen.dart'
-    as _i6;
-import 'package:maharat/features/authentication/view/screens/AuthenticationScreen.dart'
-    as _i5;
-import 'package:maharat/features/authentication/view/screens/ConfirmPasswordScreen.dart'
-    as _i2;
-import 'package:maharat/features/authentication/view/screens/ForgotPasswordScreen.dart'
-    as _i3;
-import 'package:maharat/features/authentication/view/screens/OtpScreen.dart'
-    as _i4;
-import 'package:maharat/features/home/view/HomeScreen.dart' as _i1;
-import 'package:maharat/features/onboarding/view/OnboardingScreen.dart' as _i7;
-import 'package:maharat/features/registration/view/RegistrationScreen.dart'
-    as _i8;
-import 'package:maharat/features/registration/view/screens/first_step.dart'
-    as _i9;
-import 'package:maharat/features/registration/view/screens/second_step.dart'
-    as _i10;
-import 'package:maharat/features/registration/view/screens/third_step.dart'
     as _i11;
+import 'package:maharat/features/authentication/view/screens/AuthenticationScreen.dart'
+    as _i10;
+import 'package:maharat/features/authentication/view/screens/ConfirmPasswordScreen.dart'
+    as _i7;
+import 'package:maharat/features/authentication/view/screens/ForgotPasswordScreen.dart'
+    as _i8;
+import 'package:maharat/features/authentication/view/screens/OtpScreen.dart'
+    as _i9;
+import 'package:maharat/features/home/view/HomeRootScreen.dart' as _i2;
+import 'package:maharat/features/onboarding/view/OnboardingScreen.dart' as _i1;
+import 'package:maharat/features/registration/view/RegistrationScreen.dart'
+    as _i6;
+import 'package:maharat/features/registration/view/screens/first_step.dart'
+    as _i4;
+import 'package:maharat/features/registration/view/screens/second_step.dart'
+    as _i3;
+import 'package:maharat/features/registration/view/screens/third_step.dart'
+    as _i5;
 
 abstract class $AppRoutes extends _i12.RootStackRouter {
   $AppRoutes({super.navigatorKey});
 
   @override
   final Map<String, _i12.PageFactory> pagesMap = {
-    HomeRoute.name: (routeData) {
+    OnboardingRoute.name: (routeData) {
       return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.HomeScreen(),
+        child: const _i1.OnboardingScreen(),
+      );
+    },
+    HomeRootRoute.name: (routeData) {
+      return _i12.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i2.HomeRootScreen(),
+      );
+    },
+    SecondStepRoute.name: (routeData) {
+      return _i12.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i3.SecondStepScreen(),
+      );
+    },
+    FirstStepRoute.name: (routeData) {
+      return _i12.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i4.FirstStepScreen(),
+      );
+    },
+    ThirdStepRoute.name: (routeData) {
+      return _i12.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i5.ThirdStepScreen(),
+      );
+    },
+    RegistrationRoute.name: (routeData) {
+      return _i12.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i6.RegistrationScreen(),
       );
     },
     ConfirmPasswordRoute.name: (routeData) {
       return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.ConfirmPasswordScreen(),
+        child: const _i7.ConfirmPasswordScreen(),
       );
     },
     ForgotPasswordRoute.name: (routeData) {
       final args = routeData.argsAs<ForgotPasswordRouteArgs>();
       return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i3.ForgotPasswordScreen(
+        child: _i8.ForgotPasswordScreen(
           onPhone: args.onPhone,
           onNext: args.onNext,
           onBackPress: args.onBackPress,
@@ -63,14 +93,14 @@ abstract class $AppRoutes extends _i12.RootStackRouter {
     OtpRoute.name: (routeData) {
       return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.OtpScreen(),
+        child: const _i9.OtpScreen(),
       );
     },
     AuthenticationRoute.name: (routeData) {
       final args = routeData.argsAs<AuthenticationRouteArgs>();
       return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i5.AuthenticationScreen(
+        child: _i10.AuthenticationScreen(
           onLogin: args.onLogin,
           onRegister: args.onRegister,
           onPhoneNumber: args.onPhoneNumber,
@@ -82,58 +112,98 @@ abstract class $AppRoutes extends _i12.RootStackRouter {
     AuthenticationRootRoute.name: (routeData) {
       return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.AuthenticationRootScreen(),
-      );
-    },
-    OnboardingRoute.name: (routeData) {
-      return _i12.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i7.OnboardingScreen(),
-      );
-    },
-    RegistrationRoute.name: (routeData) {
-      return _i12.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i8.RegistrationScreen(),
-      );
-    },
-    FirstStepRoute.name: (routeData) {
-      return _i12.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i9.FirstStepScreen(),
-      );
-    },
-    SecondStepRoute.name: (routeData) {
-      return _i12.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i10.SecondStepScreen(),
-      );
-    },
-    ThirdStepRoute.name: (routeData) {
-      return _i12.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i11.ThirdStepScreen(),
+        child: const _i11.AuthenticationRootScreen(),
       );
     },
   };
 }
 
 /// generated route for
-/// [_i1.HomeScreen]
-class HomeRoute extends _i12.PageRouteInfo<void> {
-  const HomeRoute({List<_i12.PageRouteInfo>? children})
+/// [_i1.OnboardingScreen]
+class OnboardingRoute extends _i12.PageRouteInfo<void> {
+  const OnboardingRoute({List<_i12.PageRouteInfo>? children})
       : super(
-          HomeRoute.name,
+          OnboardingRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'HomeRoute';
+  static const String name = 'OnboardingRoute';
 
   static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i2.ConfirmPasswordScreen]
+/// [_i2.HomeRootScreen]
+class HomeRootRoute extends _i12.PageRouteInfo<void> {
+  const HomeRootRoute({List<_i12.PageRouteInfo>? children})
+      : super(
+          HomeRootRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HomeRootRoute';
+
+  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i3.SecondStepScreen]
+class SecondStepRoute extends _i12.PageRouteInfo<void> {
+  const SecondStepRoute({List<_i12.PageRouteInfo>? children})
+      : super(
+          SecondStepRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SecondStepRoute';
+
+  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i4.FirstStepScreen]
+class FirstStepRoute extends _i12.PageRouteInfo<void> {
+  const FirstStepRoute({List<_i12.PageRouteInfo>? children})
+      : super(
+          FirstStepRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FirstStepRoute';
+
+  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i5.ThirdStepScreen]
+class ThirdStepRoute extends _i12.PageRouteInfo<void> {
+  const ThirdStepRoute({List<_i12.PageRouteInfo>? children})
+      : super(
+          ThirdStepRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ThirdStepRoute';
+
+  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i6.RegistrationScreen]
+class RegistrationRoute extends _i12.PageRouteInfo<void> {
+  const RegistrationRoute({List<_i12.PageRouteInfo>? children})
+      : super(
+          RegistrationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RegistrationRoute';
+
+  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i7.ConfirmPasswordScreen]
 class ConfirmPasswordRoute extends _i12.PageRouteInfo<void> {
   const ConfirmPasswordRoute({List<_i12.PageRouteInfo>? children})
       : super(
@@ -147,7 +217,7 @@ class ConfirmPasswordRoute extends _i12.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.ForgotPasswordScreen]
+/// [_i8.ForgotPasswordScreen]
 class ForgotPasswordRoute extends _i12.PageRouteInfo<ForgotPasswordRouteArgs> {
   ForgotPasswordRoute({
     required dynamic Function(String) onPhone,
@@ -195,7 +265,7 @@ class ForgotPasswordRouteArgs {
 }
 
 /// generated route for
-/// [_i4.OtpScreen]
+/// [_i9.OtpScreen]
 class OtpRoute extends _i12.PageRouteInfo<void> {
   const OtpRoute({List<_i12.PageRouteInfo>? children})
       : super(
@@ -209,7 +279,7 @@ class OtpRoute extends _i12.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.AuthenticationScreen]
+/// [_i10.AuthenticationScreen]
 class AuthenticationRoute extends _i12.PageRouteInfo<AuthenticationRouteArgs> {
   AuthenticationRoute({
     required dynamic Function() onLogin,
@@ -262,7 +332,7 @@ class AuthenticationRouteArgs {
 }
 
 /// generated route for
-/// [_i6.AuthenticationRootScreen]
+/// [_i11.AuthenticationRootScreen]
 class AuthenticationRootRoute extends _i12.PageRouteInfo<void> {
   const AuthenticationRootRoute({List<_i12.PageRouteInfo>? children})
       : super(
@@ -271,76 +341,6 @@ class AuthenticationRootRoute extends _i12.PageRouteInfo<void> {
         );
 
   static const String name = 'AuthenticationRootRoute';
-
-  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i7.OnboardingScreen]
-class OnboardingRoute extends _i12.PageRouteInfo<void> {
-  const OnboardingRoute({List<_i12.PageRouteInfo>? children})
-      : super(
-          OnboardingRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'OnboardingRoute';
-
-  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i8.RegistrationScreen]
-class RegistrationRoute extends _i12.PageRouteInfo<void> {
-  const RegistrationRoute({List<_i12.PageRouteInfo>? children})
-      : super(
-          RegistrationRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'RegistrationRoute';
-
-  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i9.FirstStepScreen]
-class FirstStepRoute extends _i12.PageRouteInfo<void> {
-  const FirstStepRoute({List<_i12.PageRouteInfo>? children})
-      : super(
-          FirstStepRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'FirstStepRoute';
-
-  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i10.SecondStepScreen]
-class SecondStepRoute extends _i12.PageRouteInfo<void> {
-  const SecondStepRoute({List<_i12.PageRouteInfo>? children})
-      : super(
-          SecondStepRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'SecondStepRoute';
-
-  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i11.ThirdStepScreen]
-class ThirdStepRoute extends _i12.PageRouteInfo<void> {
-  const ThirdStepRoute({List<_i12.PageRouteInfo>? children})
-      : super(
-          ThirdStepRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'ThirdStepRoute';
 
   static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
 }

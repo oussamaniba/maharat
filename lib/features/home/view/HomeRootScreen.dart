@@ -4,8 +4,8 @@ import 'package:maharat/features/home/provider/HomeViewModel.dart';
 import 'package:stacked/stacked.dart';
 
 @RoutePage()
-class HomeScreen extends StackedView<HomeViewModel> {
-  const HomeScreen({super.key});
+class HomeRootScreen extends StackedView<HomeViewModel> {
+  const HomeRootScreen({super.key});
   @override
   Widget builder(
     BuildContext context,

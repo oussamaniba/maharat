@@ -11,7 +11,7 @@ class AppRoutes extends $AppRoutes {
         path: "/onBoarding",
       ),
       AutoRoute(
-        page: HomeRoute.page,
+        page: HomeRootRoute.page,
         path: "/home",
       ),
       AutoRoute(
