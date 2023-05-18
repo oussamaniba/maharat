@@ -19,3 +19,8 @@ enum FileType {
     }, orElse: () => FileType.OTHER);
   }
 }
+
+enum SkillsType {
+  REMEMBERING,
+  READING,
+}

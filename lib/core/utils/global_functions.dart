@@ -33,54 +33,57 @@ void logEvent(dynamic input) {
   d.log("${DateTime.now()}: ${input.toString()}", level: 10);
 }
 
+
+
 showBottomSheetCountries(BuildContext context, [bool showCode = false]) {
   return showModalBottomSheet<Country?>(
-      context: context,
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(35),
-          topRight: Radius.circular(35),
-        ),
+    context: context,
+    isScrollControlled: true,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(35),
+        topRight: Radius.circular(35),
       ),
-      builder: (_) {
-        return SizedBox(
-          height: MediaQuery.of(context).size.height * .9,
-          child: Column(
-            children: <Widget>[
-              const SizedBox(height: 16),
-              Stack(
-                children: <Widget>[
-                  Positioned(
-                    right: 8,
-                    top: 4,
-                    bottom: 0,
-                    child: TextButton(
-                      child: const Text('Cancel'),
-                      onPressed: () => Navigator.pop(context),
-                    ),
+    ),
+    builder: (_) {
+      return SizedBox(
+        height: MediaQuery.of(context).size.height * .9,
+        child: Column(
+          children: <Widget>[
+            const SizedBox(height: 16),
+            Stack(
+              children: <Widget>[
+                Positioned(
+                  right: 8,
+                  top: 4,
+                  bottom: 0,
+                  child: TextButton(
+                    child: const Text('Cancel'),
+                    onPressed: () => Navigator.pop(context),
                   ),
-                  const Center(
-                    child: Text(
-                      'Choose Country',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              Expanded(
-                child: SearchCountry(
-                  showCallingCode: showCode,
-                  onSelected: (country) => Navigator.of(context).pop(country),
                 ),
+                const Center(
+                  child: Text(
+                    'Choose Country',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Expanded(
+              child: SearchCountry(
+                showCallingCode: showCode,
+                onSelected: (country) => Navigator.of(context).pop(country),
               ),
-            ],
-          ),
-        );
-      });
+            ),
+          ],
+        ),
+      );
+    },
+  );
 }

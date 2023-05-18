@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:maharat/core/apis/endpoints.dart';
 import 'package:maharat/core/utils/global_functions.dart';
+import 'package:maharat/features/_commons/data/remote/response/ProgramsResponse.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'api_service.g.dart';
@@ -10,7 +12,7 @@ class ApiService {
   static final ApiService _apiService = ApiService._();
   static ApiService get instance => _apiService;
 
-  RestClientApi restClient() => RestClientApi(_buildDioClient("BASE URL"));
+  RestClientApi get restClient => RestClientApi(_buildDioClient("https://backend.maharttafl.net/api/v2/"));
 
   Dio _buildDioClient(String baseUrl) {
     final dio = Dio()..options = BaseOptions(baseUrl: baseUrl, headers: {});
@@ -25,4 +27,9 @@ class ApiService {
 @RestApi()
 abstract class RestClientApi {
   factory RestClientApi(Dio dio, {String baseUrl}) = _RestClientApi;
+
+  @GET(ApiServicePaths.categories)
+  Future<HttpResponse<ProgramsResponse>> getAllCategories(
+    @Query("type") String type,
+  );
 }
