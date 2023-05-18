@@ -1,12 +1,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:maharat/core/routes/app_route.gr.dart';
 import 'package:maharat/features/authentication/provider/AuthenticationViewModel.dart';
 import 'package:stacked/stacked.dart';
 
 @RoutePage()
 class AuthenticationRootScreen extends StackedView<AuthenticationViewModel> {
-  const AuthenticationRootScreen({super.key});
+  AuthenticationRootScreen({super.key}) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+  }
 
   @override
   Widget builder(
@@ -21,8 +26,10 @@ class AuthenticationRootScreen extends StackedView<AuthenticationViewModel> {
           AuthenticationRoute(
             onPhoneNumber: (username) {},
             onPassword: (password) {},
-            onLogin: () {},
-            onRegister: () => viewModel.routes.navigate(const RegistrationRoute()),
+            onLogin: () {
+              viewModel.routes.replace(HomeRootRoute());
+            },
+            onRegister: () => viewModel.routes.navigate(RegistrationRoute()),
           ),
           ForgotPasswordRoute(
             onPhone: (username) {},

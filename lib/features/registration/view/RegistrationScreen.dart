@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:maharat/core/routes/app_route.gr.dart';
 import 'package:maharat/core/utils/sizespec_utils.dart';
 import 'package:maharat/features/registration/models/RegistrationAppBarItem.dart';
@@ -10,7 +11,11 @@ import 'package:stacked/stacked.dart';
 
 @RoutePage()
 class RegistrationScreen extends StackedView<RegistrationViewModel> {
-  const RegistrationScreen({super.key});
+  RegistrationScreen({super.key}) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+  }
 
   @override
   Widget builder(
