@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:maharat/core/apis/endpoints.dart';
 import 'package:maharat/core/utils/global_functions.dart';
 import 'package:maharat/features/_commons/data/remote/response/ProgramsResponse.dart';
+import 'package:maharat/features/_commons/data/remote/response/SectionsResponse.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'api_service.g.dart';
@@ -31,5 +32,13 @@ abstract class RestClientApi {
   @GET(ApiServicePaths.categories)
   Future<HttpResponse<ProgramsResponse>> getAllCategories(
     @Query("type") String type,
+  );
+
+  @GET(ApiServicePaths.sections)
+  Future<HttpResponse<SectionsResponse>> getAllSesctions();
+
+  @GET(ApiServicePaths.sectionsItemDetail)
+  Future<HttpResponse<SectionsResponse>> getSesctionItemById(
+    @Path("id") String id,
   );
 }

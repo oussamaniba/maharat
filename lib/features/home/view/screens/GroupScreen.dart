@@ -9,8 +9,10 @@ import 'package:stacked/stacked.dart';
 
 @RoutePage()
 class GroupScreen extends ViewModelWidget<HomeViewModel> {
+  final Function(ProgramsDataResponse data) onTap;
   const GroupScreen({
     super.key,
+    required this.onTap,
   });
 
   @override
@@ -42,6 +44,7 @@ class GroupScreen extends ViewModelWidget<HomeViewModel> {
                 ProgramsDataResponse data = viewModel.programs!.data![index];
                 return _CategoriesGridItem(
                   data: data,
+                  onTap: onTap,
                 );
               },
             ),
@@ -57,8 +60,11 @@ class GroupScreen extends ViewModelWidget<HomeViewModel> {
 
 class _CategoriesGridItem extends StatelessWidget {
   final ProgramsDataResponse data;
+  final Function(ProgramsDataResponse data) onTap;
+
   const _CategoriesGridItem({
     required this.data,
+    required this.onTap,
   });
 
   @override
@@ -91,7 +97,7 @@ class _CategoriesGridItem extends StatelessWidget {
         ],
       ).withPadding(const EdgeInsets.symmetric(horizontal: 10)).clickable(
             radius: BorderRadius.circular(20),
-            onTap: () {},
+            onTap: () => onTap(data),
           ),
     );
   }

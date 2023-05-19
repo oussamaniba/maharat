@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:maharat/core/di/injectable.dart';
 import 'package:maharat/core/extensions/widget_extensions.dart';
+import 'package:maharat/core/routes/app_route.dart';
 import 'package:maharat/core/routes/app_route.gr.dart';
 import 'package:maharat/core/values/constants.dart';
 import 'package:maharat/features/home/provider/HomeViewModel.dart';
@@ -33,7 +35,9 @@ class HomeRootScreen extends stacked.StackedView<HomeViewModel> {
         backgroundColor: Colors.white,
         homeIndex: 3,
         routes: [
-          const GroupRoute(),
+          GroupRoute(onTap: (data) {
+            getIt<AppRoutes>().push(SectionsRoute(data: data));
+          }),
           SkillsRoute(skill: SkillsType.REMEMBERING),
           SkillsRoute(skill: SkillsType.READING),
           const AssessementRoute(),

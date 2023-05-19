@@ -12,24 +12,6 @@ class AppRoutes extends $AppRoutes {
         initial: true,
       ),
       AutoRoute(
-        page: HomeRootRoute.page,
-        path: "/home",
-        children: [
-          AutoRoute(
-            page: GroupRoute.page,
-            path: "groups",
-          ),
-          AutoRoute(
-            page: SkillsRoute.page,
-            path: "skills",
-          ),
-          AutoRoute(
-            page: AssessementRoute.page,
-            path: "skills",
-          ),
-        ],
-      ),
-      AutoRoute(
         page: AuthenticationRootRoute.page,
         path: "/authRoot",
         children: [
@@ -68,6 +50,32 @@ class AppRoutes extends $AppRoutes {
             path: "third",
           ),
         ],
+      ),
+      AutoRoute(
+        page: HomeRootRoute.page,
+        path: "/home",
+        children: [
+          AutoRoute(
+            page: GroupRoute.page,
+            path: "groups",
+          ),
+          AutoRoute(
+            page: SkillsRoute.page,
+            path: "skills",
+          ),
+          AutoRoute(
+            page: AssessementRoute.page,
+            path: "skills",
+          ),
+        ],
+      ),
+      AutoRoute(
+        page: SectionsRoute.page,
+        path: "/sections",
+      ),
+      AutoRoute(
+        page: SectionsRouteDetails.page,
+        path: "/sections/details",
       ),
     ];
   }
