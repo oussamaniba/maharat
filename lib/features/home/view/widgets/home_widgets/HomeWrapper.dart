@@ -24,7 +24,8 @@ class HomeWrapper extends ViewModelWidget<HomeViewModel> {
           ],
         ),
         Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20).copyWith(top: SizeSpec.of(context).height * .25),
+          margin: const EdgeInsets.symmetric(horizontal: 20)
+              .copyWith(top: SizeSpec.of(context).height * .25),
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(

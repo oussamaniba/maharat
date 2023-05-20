@@ -68,7 +68,19 @@ class _SearchCountryState extends State<SearchCountry> {
       });
     } else {
       setState(() {
-        _filteredList = _list.where((element) => element.name.toLowerCase().contains(text.toString().toLowerCase()) || element.callingCode.toLowerCase().contains(text.toString().toLowerCase()) || element.countryCode.toLowerCase().startsWith(text.toString().toLowerCase())).map((e) => e).toList();
+        _filteredList = _list
+            .where((element) =>
+                element.name
+                    .toLowerCase()
+                    .contains(text.toString().toLowerCase()) ||
+                element.callingCode
+                    .toLowerCase()
+                    .contains(text.toString().toLowerCase()) ||
+                element.countryCode
+                    .toLowerCase()
+                    .startsWith(text.toString().toLowerCase()))
+            .map((e) => e)
+            .toList();
       });
     }
   }
@@ -92,10 +104,12 @@ class _SearchCountryState extends State<SearchCountry> {
     _list = await getCountries(context);
     try {
       String? code = await FlutterSimCountryCode.simCountryCode;
-      _currentCountry = _list.firstWhere((element) => element.countryCode == code);
+      _currentCountry =
+          _list.firstWhere((element) => element.countryCode == code);
       final country = _currentCountry;
       if (country != null) {
-        _list.removeWhere((element) => element.callingCode == country.callingCode);
+        _list.removeWhere(
+            (element) => element.callingCode == country.callingCode);
         _list.insert(0, country);
       }
     } finally {
@@ -135,7 +149,8 @@ class _SearchCountryState extends State<SearchCountry> {
                     borderSide: const BorderSide(),
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  contentPadding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                  contentPadding: const EdgeInsets.only(
+                      left: 16, right: 16, top: 8, bottom: 8),
                   hintText: widget.searchHintText,
                 ),
             textInputAction: TextInputAction.done,
@@ -153,14 +168,16 @@ class _SearchCountryState extends State<SearchCountry> {
                   padding: const EdgeInsets.only(top: 16),
                   controller: _scrollController,
                   itemCount: _filteredList.length,
-                  separatorBuilder: (_, index) => widget.showSeparator ? const Divider() : Container(),
+                  separatorBuilder: (_, index) =>
+                      widget.showSeparator ? const Divider() : Container(),
                   itemBuilder: (_, index) {
                     return InkWell(
                       onTap: () {
                         widget.onSelected?.call(_filteredList[index]);
                       },
                       child: Container(
-                        padding: const EdgeInsets.only(bottom: 12, top: 12, left: 24, right: 24),
+                        padding: const EdgeInsets.only(
+                            bottom: 12, top: 12, left: 24, right: 24),
                         child: Row(
                           children: <Widget>[
                             Image.asset(
@@ -173,7 +190,9 @@ class _SearchCountryState extends State<SearchCountry> {
                             ),
                             Expanded(
                                 child: Text(
-                              widget.showCallingCode ? "(${_filteredList[index].countryCode}) ${_filteredList[index].name}" : _filteredList[index].name,
+                              widget.showCallingCode
+                                  ? "(${_filteredList[index].countryCode}) ${_filteredList[index].name}"
+                                  : _filteredList[index].name,
                               style: widget.itemTextStyle,
                             )),
                           ],

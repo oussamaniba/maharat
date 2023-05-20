@@ -20,7 +20,8 @@ class HomeCategoriesSelection extends StatelessWidget {
         textDirection: TextDirection.rtl,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: List.generate(CategoryItem.categories.reversed.length, (index) {
+          children:
+              List.generate(CategoryItem.categories.reversed.length, (index) {
             var item = CategoryItem.categories.toList()[index];
             return Expanded(
               child: _CategoryItem(
@@ -60,7 +61,9 @@ class _CategoryItem extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 Image.asset(
-                  selected ? "lib/core/assets/selected.png" : "lib/core/assets/not-selected.png",
+                  selected
+                      ? "lib/core/assets/selected.png"
+                      : "lib/core/assets/not-selected.png",
                 ),
                 Positioned(
                   top: 60,

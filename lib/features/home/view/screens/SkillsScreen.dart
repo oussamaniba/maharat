@@ -18,7 +18,8 @@ class SkillsScreen extends ViewModelWidget<HomeViewModel> {
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
-    List<Skills> selectedSkills = Skills.skills.where((s) => s.type == skill).toList();
+    List<Skills> selectedSkills =
+        Skills.skills.where((s) => s.type == skill).toList();
     return HomeWrapper(
       child: Directionality(
         textDirection: TextDirection.rtl,

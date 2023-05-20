@@ -20,7 +20,8 @@ class OnBoardingButton extends StatelessWidget {
     return Container(
       height: 50,
       width: SizeSpec.of(context).width,
-      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 20).copyWith(top: 0),
+      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 20)
+          .copyWith(top: 0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(40),
         color: color ?? Colors.blue[100],

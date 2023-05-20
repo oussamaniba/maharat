@@ -13,6 +13,6 @@ class Sizes {
     if (size.isMobile) {
       return appBarMobileSize;
     }
-      return appBarTabletSize;
+    return appBarTabletSize;
   }
 }

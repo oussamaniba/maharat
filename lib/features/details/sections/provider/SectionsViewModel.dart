@@ -28,6 +28,4 @@ class SectionsViewModel extends BaseViewModel {
     isLoading = v;
     notifyListeners();
   }
-
-  
 }

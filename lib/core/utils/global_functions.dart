@@ -11,9 +11,12 @@ import 'package:maharat/features/registration/view/widgets/SearchCountry.dart';
 
 Future<Uint8List> getBytesFromAsset(String path, int width) async {
   ByteData data = await rootBundle.load(path);
-  ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(), targetWidth: width);
+  ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
+      targetWidth: width);
   ui.FrameInfo fi = await codec.getNextFrame();
-  return (await fi.image.toByteData(format: ui.ImageByteFormat.png))!.buffer.asUint8List();
+  return (await fi.image.toByteData(format: ui.ImageByteFormat.png))!
+      .buffer
+      .asUint8List();
 }
 
 Map<String, dynamic> decodeJWT(String jwt) {
@@ -26,14 +29,13 @@ String format(String f, DateTime date) {
 
 Future<void> loadSecurityCertificat() async {
   ByteData data = await PlatformAssetBundle().load('assets/cert.pem');
-  SecurityContext.defaultContext.setTrustedCertificatesBytes(data.buffer.asUint8List());
+  SecurityContext.defaultContext
+      .setTrustedCertificatesBytes(data.buffer.asUint8List());
 }
 
 void logEvent(dynamic input) {
   d.log("${DateTime.now()}: ${input.toString()}", level: 10);
 }
-
-
 
 showBottomSheetCountries(BuildContext context, [bool showCode = false]) {
   return showModalBottomSheet<Country?>(

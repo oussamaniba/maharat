@@ -23,7 +23,7 @@ class _RestClientApi implements RestClientApi {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'type': type};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<HttpResponse<ProgramsResponse>>(Options(
       method: 'GET',
@@ -43,11 +43,11 @@ class _RestClientApi implements RestClientApi {
   }
 
   @override
-  Future<HttpResponse<SectionsResponse>> getAllSesctions() async {
+  Future<HttpResponse<SectionsResponse>> getAllSections() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<HttpResponse<SectionsResponse>>(Options(
       method: 'GET',
@@ -67,11 +67,11 @@ class _RestClientApi implements RestClientApi {
   }
 
   @override
-  Future<HttpResponse<SectionsResponse>> getSesctionItemById(String id) async {
+  Future<HttpResponse<SectionsResponse>> getSectionItemById(String id) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<HttpResponse<SectionsResponse>>(Options(
       method: 'GET',
@@ -86,6 +86,59 @@ class _RestClientApi implements RestClientApi {
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = SectionsResponse.fromJson(_result.data!);
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<SectionsTestResponse>> getSectionItemTest(
+    String sectionId,
+    String sectionType,
+    String sectionItemId,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<SectionsTestResponse>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/programs/sections/program/${sectionId}/${sectionType}/${sectionItemId}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = SectionsTestResponse.fromJson(_result.data!);
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<SectionsTestTypesResponse>> getSectionTestTypes(
+      String sectionId) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<SectionsTestTypesResponse>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/programs/sections/types/${sectionId}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = SectionsTestTypesResponse.fromJson(_result.data!);
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }

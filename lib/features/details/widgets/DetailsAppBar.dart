@@ -17,7 +17,7 @@ class DetailsAppBar extends StatelessWidget {
     return Container(
       width: SizeSpec.of(context).width,
       height: 100.0,
-      color: const Color(0x9BADDFF6),
+      color: const Color(0x9BC9D7DD),
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [

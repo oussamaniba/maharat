@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:conditioned/conditioned.dart';
 import 'package:flutter/material.dart';
 import 'package:maharat/core/extensions/widget_extensions.dart';
+import 'package:maharat/core/utils/sizespec_utils.dart';
 import 'package:maharat/features/_commons/data/remote/response/ProgramsDataResponse.dart';
 import 'package:maharat/features/home/provider/HomeViewModel.dart';
 import 'package:maharat/features/home/view/widgets/home_widgets/HomeWrapper.dart';
@@ -20,8 +21,11 @@ class GroupScreen extends ViewModelWidget<HomeViewModel> {
     return HomeWrapper(
       child: Conditioned.boolean(
         viewModel.isLoading,
-        trueBuilder: () => const Center(
-          child: CircularProgressIndicator.adaptive(),
+        trueBuilder: () => SizedBox(
+          height: SizeSpec.of(context).height * .3,
+          child: const Center(
+            child: CircularProgressIndicator.adaptive(),
+          ),
         ),
         falseBuilder: () => Conditioned.boolean(
           viewModel.programs != null && viewModel.programs?.data != null,
@@ -93,7 +97,8 @@ class _CategoriesGridItem extends StatelessWidget {
           ),
           Image.network(
             data.avatar!,
-          ).withPadding(const EdgeInsets.symmetric(vertical: 20).copyWith(left: 10)),
+          ).withPadding(
+              const EdgeInsets.symmetric(vertical: 20).copyWith(left: 10)),
         ],
       ).withPadding(const EdgeInsets.symmetric(horizontal: 10)).clickable(
             radius: BorderRadius.circular(20),

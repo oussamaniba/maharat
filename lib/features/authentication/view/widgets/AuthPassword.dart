@@ -47,7 +47,9 @@ class _AuthPasswordState extends State<AuthPassword> {
           IconButton(
             onPressed: updatePasswordVisibility,
             icon: Icon(
-              isPasswordVisible ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+              isPasswordVisible
+                  ? Icons.visibility_off_outlined
+                  : Icons.visibility_outlined,
               color: Colors.grey[300],
             ),
           ),

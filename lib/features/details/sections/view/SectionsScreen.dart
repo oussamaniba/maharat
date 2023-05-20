@@ -49,7 +49,8 @@ class SectionsScreen extends StackedView<SectionsViewModel> {
                       horizontal: 30,
                       vertical: 10,
                     ).copyWith(bottom: 20),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4,
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
@@ -57,7 +58,8 @@ class SectionsScreen extends StackedView<SectionsViewModel> {
                     ),
                     itemCount: viewModel.section!.data!.length,
                     itemBuilder: (BuildContext context, int index) {
-                      SectionsDataResponse data = viewModel.section!.data![index];
+                      SectionsDataResponse data =
+                          viewModel.section!.data![index];
                       return SectionssDataItems(
                         data: data,
                         onTap: (id) {

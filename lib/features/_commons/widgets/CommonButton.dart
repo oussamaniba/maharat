@@ -47,7 +47,9 @@ class CommonButton extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Row(
-              mainAxisAlignment: icon == null ? MainAxisAlignment.center : MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: icon == null
+                  ? MainAxisAlignment.center
+                  : MainAxisAlignment.spaceBetween,
               children: [
                 if (icon != null) ...[
                   Icon(
@@ -63,7 +65,9 @@ class CommonButton extends StatelessWidget {
                     fontSize: fontSize,
                     decorationColor: textColor ?? Colors.black,
                     fontWeight: FontWeight.bold,
-                    decoration: isUnderline ? TextDecoration.underline : TextDecoration.none,
+                    decoration: isUnderline
+                        ? TextDecoration.underline
+                        : TextDecoration.none,
                     decorationThickness: 1,
                   ),
                 ),

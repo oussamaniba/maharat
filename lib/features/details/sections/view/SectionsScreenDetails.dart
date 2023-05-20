@@ -2,13 +2,16 @@ import 'package:auto_route/auto_route.dart';
 import 'package:conditioned/conditioned.dart';
 import 'package:flutter/material.dart';
 import 'package:maharat/core/di/injectable.dart';
+import 'package:maharat/core/extensions/widget_extensions.dart';
 import 'package:maharat/core/routes/app_route.dart';
 import 'package:maharat/core/routes/app_route.gr.dart';
+import 'package:maharat/core/utils/sizespec_utils.dart';
 import 'package:maharat/features/_commons/data/remote/response/SectionsDataResponse.dart';
 import 'package:maharat/features/details/sections/models/Sections.dart';
 import 'package:maharat/features/details/sections/provider/SectionsDetailsViewModel.dart';
-import 'package:maharat/features/details/sections/view/widgets/SectionsDataItem.dart';
+import 'package:maharat/features/details/sections/view/widgets/SectionsDetailItem.dart';
 import 'package:maharat/features/details/widgets/DetailsAppBar.dart';
+import 'package:maharat/features/details/widgets/FloatingAppButton.dart';
 import 'package:stacked/stacked.dart';
 
 @RoutePage()
@@ -29,63 +32,63 @@ class SectionsScreenDetails extends StackedView<SectionsDetailsViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Column(
-            children: [
-              DetailsAppBar(
-                title: data.data?.firstWhere((s) => s.id == selectedId).name ?? "",
-                onBack: () {
-                  getIt<AppRoutes>().pop();
-                },
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniStartTop,
+      floatingActionButton: FloatingAppButton(
+        left: "التالى",
+        onLeft: viewModel.onNext,
+        right: "السابق",
+        onRight: viewModel.onPrevious,
+      ),
+      appBar: PreferredSize(
+        preferredSize: Size(SizeSpec.of(context).width, 100),
+        child: DetailsAppBar(
+          title: viewModel.title,
+          onBack: () {
+            getIt<AppRoutes>().pop();
+          },
+        ),
+      ),
+      body: Conditioned.boolean(
+        viewModel.isLoading,
+        trueBuilder: () => const Center(
+          child: CircularProgressIndicator.adaptive(),
+        ),
+        falseBuilder: () => Conditioned.boolean(
+          viewModel.section != null && viewModel.section?.data != null,
+          trueBuilder: () => Directionality(
+            textDirection: TextDirection.rtl,
+            child: GridView.builder(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 30,
+                vertical: 10,
+              ).copyWith(bottom: 20),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 5,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                mainAxisExtent: 150,
               ),
-              Expanded(
-                child: Conditioned.boolean(
-                  viewModel.isLoading,
-                  trueBuilder: () => const Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  ),
-                  falseBuilder: () => Conditioned.boolean(
-                    viewModel.section != null && viewModel.section?.data != null,
-                    trueBuilder: () => Directionality(
-                      textDirection: TextDirection.rtl,
-                      child: GridView.builder(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 30,
-                          vertical: 10,
-                        ).copyWith(bottom: 20),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                          mainAxisSpacing: 10,
-                          crossAxisSpacing: 10,
-                          mainAxisExtent: 100,
-                        ),
-                        itemCount: viewModel.section!.data!.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          SectionsDataResponse data = viewModel.section!.data![index];
-                          return SectionssDataItems(
-                            data: data,
-                            onTap: (id) {
-                              getIt<AppRoutes>().push(
-                                SectionsRouteDetails(
-                                  selectedId: id.id!,
-                                  data: viewModel.section!,
-                                ),
-                              );
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                    falseBuilder: () => const Center(
-                      child: Text("No Data"),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          )
-        ],
+              itemCount: viewModel.section!.data!.length,
+              itemBuilder: (BuildContext context, int index) {
+                SectionsDataResponse sectionItem =
+                    viewModel.section!.data![index];
+                return SectionsDetailItem(
+                  data: sectionItem,
+                  onTap: (d) {
+                    getIt<AppRoutes>().push(SectionsRouteTest(
+                      sectionId: selectedId.toString(),
+                      allData: viewModel.section?.data ?? [],
+                      selectedIndex: index,
+                    ));
+                  },
+                );
+              },
+            ).withPadding(const EdgeInsets.only(top: 30)),
+          ),
+          falseBuilder: () => const Center(
+            child: Text("No Data"),
+          ),
+        ),
       ),
     );
   }
@@ -100,7 +103,8 @@ class SectionsScreenDetails extends StackedView<SectionsDetailsViewModel> {
 
   @override
   void onViewModelReady(SectionsDetailsViewModel viewModel) async {
-    await viewModel.initializeSections(data.data!.firstWhere((s) => s.id == selectedId));
+    await viewModel
+        .initializeSections(data.data!.firstWhere((s) => s.id == selectedId));
     super.onViewModelReady(viewModel);
   }
 }

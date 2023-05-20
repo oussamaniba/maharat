@@ -40,6 +40,9 @@ dependencies:
   mime: ^1.0.4
   flutter_otp_text_field: ^1.1.1
   country_calling_code_picker: ^2.0.1
+  flutter_custom_clippers: ^2.1.0
+  expandable_page_view: ^1.0.17
+  banner_carousel: ^1.2.1
 
 dev_dependencies:
   flutter_test:

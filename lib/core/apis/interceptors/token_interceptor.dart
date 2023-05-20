@@ -6,7 +6,8 @@ class TokenInterceptor extends Interceptor {
   var appDatabase = getIt<AppDatabase>();
 
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+  void onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
     var jwt = await appDatabase.getJwt();
     if (jwt != null) {
       options.headers["Authorization"] = "Bearer $jwt)";

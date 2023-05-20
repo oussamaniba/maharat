@@ -9,8 +9,11 @@ extension PageRouteInfo<T> on PageInfo<T> {
   }
 
   Future<int> previous() async {
-    int? previous = getIt<AppRoutes>().innerRouterOf<TabsRouter>(name)?.previousIndex;
-    getIt<AppRoutes>().innerRouterOf<TabsRouter>(name)?.setActiveIndex(previous ?? 0);
+    int? previous =
+        getIt<AppRoutes>().innerRouterOf<TabsRouter>(name)?.previousIndex;
+    getIt<AppRoutes>()
+        .innerRouterOf<TabsRouter>(name)
+        ?.setActiveIndex(previous ?? 0);
     return previous ?? 0;
   }
 }
@@ -26,7 +29,9 @@ extension Widgets on Widget {
     return Expanded(child: this);
   }
 
-  Widget withPadding([EdgeInsets padding = const EdgeInsets.symmetric(horizontal: 10, vertical: 10)]) {
+  Widget withPadding(
+      [EdgeInsets padding =
+          const EdgeInsets.symmetric(horizontal: 10, vertical: 10)]) {
     return Padding(
       padding: padding,
       child: this,

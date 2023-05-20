@@ -32,17 +32,17 @@ class SectionssDataItems extends StatelessWidget {
               style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
-                fontSize: 17,
+                fontSize: 15,
               ),
             ),
           ),
           SizedBox(
-            width: 50,
+            width: 80,
             height: 100,
             child: Image.network(
               data.avatar!,
             ).withPadding(
-              const EdgeInsets.symmetric(vertical: 20).copyWith(left: 0),
+              const EdgeInsets.symmetric(horizontal: 20).copyWith(left: 0),
             ),
           ),
         ],
