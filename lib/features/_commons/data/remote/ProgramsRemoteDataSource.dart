@@ -11,12 +11,12 @@ abstract class ProgramsRemoteDataSource {
   Future<HttpResponse<SectionsResponse>> getAllSectionCategories();
   Future<HttpResponse<SectionsResponse>> getAllSectionItemsById(String id);
   Future<HttpResponse<SectionsTestResponse>> getAllSectionTest(
-      String sectionId,
-      String sectionType,
-      String sectionItemId,
+    String sectionId,
+    String sectionType,
+    String sectionItemId,
   );
 
   Future<HttpResponse<SectionsTestTypesResponse>> getAllSectionTestTypes(
-      String sectionId,
+    String sectionId,
   );
 }

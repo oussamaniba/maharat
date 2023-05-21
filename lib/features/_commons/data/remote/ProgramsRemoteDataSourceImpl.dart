@@ -34,13 +34,13 @@ class ProgramsRemoteDataSourceImpl extends ProgramsRemoteDataSource {
     String sectionType,
     String sectionItemId,
   ) async {
-    return await remote.getSectionItemTest(sectionId, sectionType, sectionItemId);
+    return await remote.getSectionItemTest(
+        sectionId, sectionType, sectionItemId);
   }
 
   @override
   Future<HttpResponse<SectionsTestTypesResponse>> getAllSectionTestTypes(
-      String sectionId
-      ) async {
+      String sectionId) async {
     return await remote.getSectionTestTypes(sectionId);
   }
 }

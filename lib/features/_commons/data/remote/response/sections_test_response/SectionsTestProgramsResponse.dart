@@ -1,22 +1,18 @@
+import 'package:maharat/features/_commons/data/remote/response/sections_test_response/SectionsTestChooseImage.dart';
 import 'package:maharat/features/_commons/data/remote/response/sections_test_response/SectionsTestSounds.dart';
 
 class SectionsTestProgramsResponse {
-  List<dynamic>? images;
+  dynamic images;
   SectionsTestSounds? sounds;
 
   SectionsTestProgramsResponse({this.images, this.sounds});
 
-  @override
-  String toString() => 'Program(images: $images, sounds: $sounds)';
-
-  factory SectionsTestProgramsResponse.fromJson(Map<String, dynamic> json) =>
-      SectionsTestProgramsResponse(
-        images: json['images'] as List<dynamic>? ?? [],
-        sounds: json['sounds'] == null
-            ? null
-            : SectionsTestSounds.fromJson(
-                json['sounds'] as Map<String, dynamic>? ?? {},
-              ),
+  factory SectionsTestProgramsResponse.fromJson(Map<String, dynamic> json) => SectionsTestProgramsResponse(
+        images: switch (json['images'].runtimeType == List<dynamic>) {
+          false => SectionTestChooseImage.fromJson(json['images'] as Map<String, dynamic>).toJson().values.toList(),
+          true => json['images'] as List<dynamic>? ?? [], //Default value
+        },
+        sounds: SectionsTestSounds.fromJson(json['sounds'] as Map<String, dynamic>? ?? {}),
       );
 
   Map<String, dynamic> toJson() => {

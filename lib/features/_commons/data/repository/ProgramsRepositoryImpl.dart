@@ -53,12 +53,10 @@ class ProgramsRepositoryImpl extends ProgramsRepository {
 
   @override
   Future<Result<SectionsTestResponse, ExceptionMessageHandler>> getSectionTest(
-    String sectionId,
-    String sectionType,
-    String sectionItemId
-  ) async {
+      String sectionId, String sectionType, String sectionItemId) async {
     try {
-      var result = await source.getAllSectionTest(sectionId, sectionType, sectionItemId);
+      var result =
+          await source.getAllSectionTest(sectionId, sectionType, sectionItemId);
       return Success(result.data);
     } on DioError {
       return Error(ExceptionMessageHandler('An Error has occured'));

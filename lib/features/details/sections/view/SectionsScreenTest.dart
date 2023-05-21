@@ -9,6 +9,7 @@ import 'package:maharat/core/utils/sizespec_utils.dart';
 import 'package:maharat/features/_commons/data/remote/response/SectionsDataResponse.dart';
 import 'package:maharat/features/_commons/data/remote/response/sections_test_types_response/SectionsTestTypesDataResponse.dart';
 import 'package:maharat/features/details/sections/provider/SectionsTestViewModel.dart';
+import 'package:maharat/features/details/sections/view/tests/ChoosingTest.dart';
 import 'package:maharat/features/details/sections/view/tests/IdentificationTest.dart';
 import 'package:maharat/features/details/widgets/DetailsAppBar.dart';
 import 'package:maharat/features/details/widgets/FloatingAppButton.dart';
@@ -66,9 +67,17 @@ class SectionsScreenTest extends StackedView<SectionsTestViewModel> {
           falseBuilder: () => Column(
             children: [
               ExpandablePageView(
-                children: [
-                  IdentificationTest(data: viewModel.test!),
-                ],
+                physics: const NeverScrollableScrollPhysics(),
+                controller: viewModel.pageController,
+                children: viewModel.testTypes.map((e) {
+                    return switch(e.id!) {
+                      1 => IdentificationTest(data: viewModel.test!),
+                      2 => ChoosingTest(data: viewModel.test!),
+                      _ => Container(
+                        height: 100,
+                      ),
+                    };
+                }).toList(),
               ),
               const SizedBox(height: 30),
               TestControlWidget(
@@ -76,7 +85,8 @@ class SectionsScreenTest extends StackedView<SectionsTestViewModel> {
                 testItems: viewModel.testTypes,
                 objectIndex: viewModel.index,
                 allData: allData,
-                onObjectTap: (index) => viewModel.updateSelectedIndex(index, true),
+                onObjectTap: (index) =>
+                    viewModel.updateSelectedIndex(index, true),
                 onTestTap: (index) => viewModel.updateTestTypeIndex(index),
               ),
             ],
@@ -119,7 +129,6 @@ class TestControlWidget extends StatelessWidget {
     required this.onTestTap,
     super.key,
   });
-
 
   @override
   Widget build(BuildContext context) {

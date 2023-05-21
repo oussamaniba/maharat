@@ -29,10 +29,7 @@ class SectionsTestDataResponse {
         name: json['name'] as String?,
         enabled: json['enabled'] as bool?,
         listDisabled: json['listDisabled'] as bool?,
-        program: json['program'] == null
-            ? null
-            : SectionsTestProgramsResponse.fromJson(
-                json['program'] as Map<String, dynamic>),
+        program: SectionsTestProgramsResponse.fromJson(json['program'] as Map<String, dynamic>? ?? {}),
       );
 
   Map<String, dynamic> toJson() => {

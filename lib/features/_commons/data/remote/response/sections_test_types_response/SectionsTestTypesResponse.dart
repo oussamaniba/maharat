@@ -34,4 +34,5 @@ class SectionsTestTypesResponse {
       data: data ?? this.data,
     );
   }
+
 }

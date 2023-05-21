@@ -1,9 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:maharat/core/di/injectable.dart';
 import 'package:maharat/core/routes/app_route.dart';
-import 'package:maharat/core/utils/global_functions.dart';
 import 'package:maharat/features/_commons/data/remote/response/SectionsDataResponse.dart';
 import 'package:maharat/features/_commons/data/remote/response/sections_test_response/SectionsTestDataResponse.dart';
-import 'package:maharat/features/_commons/data/remote/response/sections_test_response/SectionsTestResponse.dart';
 import 'package:maharat/features/_commons/data/remote/response/sections_test_types_response/SectionsTestTypesDataResponse.dart';
 import 'package:maharat/features/_commons/data/repository/ProgramsRepository.dart';
 import 'package:stacked/stacked.dart';
@@ -20,6 +19,8 @@ class SectionsTestViewModel extends BaseViewModel {
   );
 
   final ProgramsRepository programsRepository = getIt<ProgramsRepository>();
+
+  PageController pageController = PageController();
 
   String title = "";
   int index = 0;
@@ -39,9 +40,8 @@ class SectionsTestViewModel extends BaseViewModel {
       sectionData.elementAt(index).id!.toString(),
     );
     result.when(
-        (success) => test = success.data,
-        (error) => getIt<AppRoutes>().pop()
-    );
+            (success) => test = success.data,
+            (error) => getIt<AppRoutes>().pop());
     _updateIsLoading(false);
   }
 
@@ -50,12 +50,11 @@ class SectionsTestViewModel extends BaseViewModel {
     var result = await programsRepository.getSectionTestTypes(sectionId);
     testTypes.clear();
     result.when((success) async {
-        if(success.data != null) {
-          testTypes.addAll(success.data?.toList() ?? []);
-          await _loadProgram();
-        }
-      }, (error) => getIt<AppRoutes>().pop()
-    );
+      if (success.data != null) {
+        testTypes.addAll(success.data?.toList() ?? []);
+        await _loadProgram();
+      }
+    }, (error) => getIt<AppRoutes>().pop());
   }
 
   onNext() {
@@ -69,7 +68,6 @@ class SectionsTestViewModel extends BaseViewModel {
     }
     title = sectionData.elementAt(index).name ?? "";
   }
-
 
   onPrevious() {
     if (sectionData.isEmpty) return;
@@ -98,6 +96,7 @@ class SectionsTestViewModel extends BaseViewModel {
 
   updateTestTypeIndex(int index) {
     selectedTestType = index;
+    pageController.jumpToPage(selectedTestType);
     _loadProgram();
   }
 }

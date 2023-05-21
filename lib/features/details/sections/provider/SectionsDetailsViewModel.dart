@@ -56,7 +56,6 @@ class SectionsDetailsViewModel extends BaseViewModel {
     title = sections.data?.elementAt(index).name ?? "";
   }
 
-
   onPrevious() {
     if (sections.data == null) return;
     _updateIsLoading(true);

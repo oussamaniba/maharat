@@ -17,7 +17,8 @@ abstract class ProgramsRepository {
     String sectionType,
     String sectionItemId,
   );
-  Future<Result<SectionsTestTypesResponse, ExceptionMessageHandler>> getSectionTestTypes(
+  Future<Result<SectionsTestTypesResponse, ExceptionMessageHandler>>
+      getSectionTestTypes(
     String sectionId,
   );
 }
