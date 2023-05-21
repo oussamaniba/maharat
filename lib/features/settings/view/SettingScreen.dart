@@ -11,13 +11,14 @@ class SettingScreen extends StackedView<SettingViewModel> {
   SettingScreen({
     super.key,
   }) {
-    SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
   }
 
   @override
-  Widget builder(
-      BuildContext context, SettingViewModel viewModel, Widget? child) {
+  Widget builder(BuildContext context, SettingViewModel viewModel, Widget? child) {
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -38,11 +39,9 @@ class SettingScreen extends StackedView<SettingViewModel> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text("الصوت"),
+                      const Text("الصوت"),
                       GestureDetector(
-                        onTap: () {
-                          /// TODO [ Implement action here, Add some Padding with the extension function ]
-                        },
+                        onTap: () {},
                         child: SvgPicture.asset("assets/sound.svg"),
                       ),
                     ],

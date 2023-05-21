@@ -33,8 +33,8 @@ class AuthenticationScreen extends StatelessWidget {
           Container(
             height: SizeSpec.of(context).height * .3,
           ),
-          AuthNumber(
-            placeHolder: "رقم الجوال",
+          AuthEmail(
+            placeHolder: "Email",
             onText: onPhoneNumber,
           ),
           const SizedBox(height: 20),

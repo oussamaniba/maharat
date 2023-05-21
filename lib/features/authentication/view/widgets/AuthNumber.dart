@@ -1,39 +1,21 @@
-import 'package:country_calling_code_picker/country.dart';
-import 'package:country_calling_code_picker/functions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:maharat/core/utils/sizespec_utils.dart';
 
-class AuthNumber extends StatefulWidget {
+class AuthEmail extends StatefulWidget {
   final String placeHolder;
   final Function(String value) onText;
 
-  const AuthNumber({
+  const AuthEmail({
     required this.placeHolder,
     required this.onText,
     super.key,
   });
 
   @override
-  State<AuthNumber> createState() => _AuthNumberState();
+  State<AuthEmail> createState() => _AuthEmailState();
 }
 
-class _AuthNumberState extends State<AuthNumber> {
-  String? countryCode;
-
-  @override
-  void initState() {
-    super.initState();
-    loadCountryCode();
-  }
-
-  Future loadCountryCode() async {
-    Country country = await getDefaultCountry(context);
-    setState(() {
-      countryCode = country.callingCode;
-    });
-  }
-
+class _AuthEmailState extends State<AuthEmail> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,52 +31,23 @@ class _AuthNumberState extends State<AuthNumber> {
           width: .2,
         ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          TextButton(
-            onPressed: () async => await showCountryPickerSheet(
-              context,
-            ).then((value) {
-              setState(() {
-                countryCode = value?.callingCode;
-              });
-            }),
-            child: Text(
-              countryCode ?? "--",
-              style: TextStyle(
-                color: Colors.red[300],
-                fontSize: 15.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+      child: TextFormField(
+        onChanged: (v) => widget.onText(v),
+        maxLength: 9,
+        textDirection: TextDirection.rtl,
+        keyboardType: TextInputType.emailAddress,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: widget.placeHolder,
+          hintTextDirection: TextDirection.rtl,
+          counterStyle: const TextStyle(
+            height: double.minPositive,
           ),
-          Expanded(
-            child: TextFormField(
-              onChanged: (v) => widget.onText("$countryCode$v"),
-              maxLength: 9,
-              textDirection: TextDirection.rtl,
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ],
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: widget.placeHolder,
-                hintTextDirection: TextDirection.rtl,
-                counterStyle: const TextStyle(
-                  height: double.minPositive,
-                ),
-                counterText: "",
-                hintStyle: const TextStyle(
-                  color: Colors.grey,
-                ),
-              ),
-            ),
+          counterText: "",
+          hintStyle: const TextStyle(
+            color: Colors.grey,
           ),
-        ],
+        ),
       ),
     );
   }

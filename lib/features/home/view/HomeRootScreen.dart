@@ -34,6 +34,7 @@ class HomeRootScreen extends stacked.StackedView<HomeViewModel> {
       child: AutoTabsScaffold(
         backgroundColor: Colors.white,
         homeIndex: 3,
+        extendBodyBehindAppBar: true,
         routes: [
           GroupRoute(onTap: (data) {
             getIt<AppRoutes>().push(SectionsRoute(data: data));

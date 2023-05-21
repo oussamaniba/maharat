@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:maharat/core/extensions/widget_extensions.dart';
+import 'package:maharat/core/utils/sizespec_utils.dart';
+import 'package:maharat/features/home/view/widgets/home_widgets/HomeTopBar.dart';
 import 'package:maharat/features/home/view/widgets/home_widgets/HomeWrapper.dart';
 
 @RoutePage()
@@ -9,21 +11,49 @@ class AssessementScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomeWrapper(
-      child: Row(
+    return CustomScrollView(
+      shrinkWrap: true,
+      slivers: [
+        SliverAppBar(
+          floating: true,
+          backgroundColor: Colors.transparent,
+          expandedHeight: SizeSpec.of(context).height * .3,
+          leading: IconButton(
+            onPressed: () {
+            },
+            icon: const Icon(Icons.more_vert_outlined),
+            color: Colors.orange,
+          ),
+          actions: [
+            Image.asset(
+              "lib/core/assets/logo.jpeg",
+              height: 50,
+              width: 70,
+            ).withPadding(const EdgeInsets.only(right: 20))
+          ],
+          flexibleSpace: const HomeTopBar(),
+      ),
+      SliverList.list(
         children: [
-          _AssementItem(
-            text: "الاختبار الثاني",
-            color: Colors.blue[200]!,
-            onTap: () {},
-          ),
-          _AssementItem(
-            text: "الاختبار الأول",
-            color: Colors.pink[100]!,
-            onTap: () {},
-          ),
-        ],
-      ).withPadding(const EdgeInsets.only(bottom: 10)),
+            HomeWrapper(
+              child: Row(
+                children: [
+                  _AssementItem(
+                    text: "الاختبار الثاني",
+                    color: Colors.blue[200]!,
+                    onTap: () {},
+                  ),
+                  _AssementItem(
+                    text: "الاختبار الأول",
+                    color: Colors.pink[100]!,
+                    onTap: () {},
+                  ),
+                ],
+              ).withPadding(const EdgeInsets.only(bottom: 10)),
+            ),
+          ],
+        )
+      ]
     );
   }
 }

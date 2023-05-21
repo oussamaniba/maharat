@@ -16,37 +16,36 @@ class HomeWrapper extends ViewModelWidget<HomeViewModel> {
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
-    return Stack(
-      children: [
-        const Column(
+    return Container(
+      color: const Color(0xFFf4f6f8),
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20).copyWith(top: 0),
+        decoration:  BoxDecoration(
+          color: Colors.white,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey[100]!,
+              offset: const Offset(.5, .5)
+            )
+          ]
+        ),
+        child: Column(
           children: [
-            HomeTopBar(),
+            HomeCategoriesSelection(
+              selected: viewModel.selected,
+              onChange: (index) {
+                HomeRootRoute.page.toPage(index);
+                viewModel.updateSelected(index);
+              },
+            ),
+            child,
           ],
         ),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20)
-              .copyWith(top: SizeSpec.of(context).height * .25),
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-            ),
-          ),
-          child: Column(
-            children: [
-              HomeCategoriesSelection(
-                selected: viewModel.selected,
-                onChange: (index) {
-                  HomeRootRoute.page.toPage(index);
-                  viewModel.updateSelected(index);
-                },
-              ),
-              child,
-            ],
-          ),
-        ).toScrollable(padding: const EdgeInsets.only(top: 80)),
-      ],
+      ).toScrollable(),
     );
   }
 }

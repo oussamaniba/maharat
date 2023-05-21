@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:maharat/core/extensions/widget_extensions.dart';
 import 'package:maharat/core/utils/sizespec_utils.dart';
 import 'package:maharat/features/_commons/data/remote/response/sections_test_response/SectionsTestDataResponse.dart';
+import 'package:maharat/features/details/widgets/HoriztontalListWheel.dart';
 
 class IdentificationTest extends StatefulWidget {
   final SectionsTestDataResponse data;
@@ -26,13 +27,14 @@ class _IdentificationTestState extends State<IdentificationTest> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 180,
+      height: 250,
       width: SizeSpec.of(context).width,
-      child: PageView.builder(
+      child: HorizontalListWheelScrollView(
+        itemExtent: 250.0,
         itemCount: widget.data.program?.images?.length ?? 0,
-        controller: PageController(viewportFraction: .3),
-        padEnds: false,
-        itemBuilder: (context, index) {
+        controller: FixedExtentScrollController(initialItem: 0),
+        onSelectedItemChanged: updateSelectedIndex,
+        builder: (context, index) {
           return Container(
             alignment: Alignment.center,
             decoration: BoxDecoration(

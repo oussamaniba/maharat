@@ -29,8 +29,8 @@ class ForgotPasswordScreen extends StatelessWidget {
               onBackPerss: () => context.tabsRouter.setActiveIndex(0),
             ),
             Divider(color: Colors.grey[100]),
-            AuthNumber(
-              placeHolder: "رقم الجوال",
+            AuthEmail(
+              placeHolder: "Email",
               onText: onPhone,
             ).withPadding(const EdgeInsets.only(top: 50)),
             CommonButton(

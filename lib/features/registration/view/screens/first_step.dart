@@ -34,7 +34,7 @@ class FirstStepScreen extends StatelessWidget {
               onText: (value) {},
             ).withPadding(const EdgeInsets.only(top: 20)),
             RegisterNumber(
-              placeHolder: "رقم الجوال",
+              placeHolder: "Email",
               onText: (value) {},
             ).withPadding(const EdgeInsets.only(top: 20)),
             RegisterPassword(
