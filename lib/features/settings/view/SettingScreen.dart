@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -5,6 +6,7 @@ import 'package:maharat/features/settings/provider/SettingViewModel.dart';
 import 'package:maharat/features/settings/view/widgets/SettingAppBar.dart';
 import 'package:stacked/stacked.dart';
 
+@RoutePage()
 class SettingScreen extends StackedView<SettingViewModel> {
   SettingScreen({
     super.key,

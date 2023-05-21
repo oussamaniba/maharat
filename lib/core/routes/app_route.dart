@@ -81,6 +81,18 @@ class AppRoutes extends $AppRoutes {
         page: SectionsRouteTest.page,
         path: "/sections/test",
       ),
+      AutoRoute(
+        page: SettingRoute.page,
+        path: "/setting",
+      ),
+      AutoRoute(
+        page: AboutUsRoute.page,
+        path: "/aboutUs",
+      ),
+      AutoRoute(
+        page: TermsAndConditions.page,
+        path: "/terms",
+      ),
     ];
   }
 }
