@@ -9,7 +9,6 @@ class AppRoutes extends $AppRoutes {
       AutoRoute(
         page: OnboardingRoute.page,
         path: "/onBoarding",
-        initial: true,
       ),
       AutoRoute(
         page: AuthenticationRootRoute.page,
@@ -36,6 +35,7 @@ class AppRoutes extends $AppRoutes {
       AutoRoute(
         page: RegistrationRoute.page,
         path: "/registration",
+        initial: true,
         children: [
           AutoRoute(
             page: FirstStepRoute.page,

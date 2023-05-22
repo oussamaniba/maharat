@@ -6,7 +6,7 @@ import 'package:maharat/core/utils/sizespec_utils.dart';
 import 'package:maharat/features/_commons/widgets/CommonButton.dart';
 import 'package:maharat/features/registration/models/TypeChoiceItems.dart';
 import 'package:maharat/features/registration/view/widgets/RegisterDropDown.dart';
-import 'package:maharat/features/registration/view/widgets/RegisterNumber.dart';
+import 'package:maharat/features/registration/view/widgets/RegisterEmail.dart';
 import 'package:maharat/features/registration/view/widgets/RegisterPassword.dart';
 import 'package:maharat/features/registration/view/widgets/RegisterSimpleText.dart';
 import 'package:maharat/features/registration/view/widgets/TypeChoice.dart';
@@ -33,7 +33,7 @@ class FirstStepScreen extends StatelessWidget {
               placeHolder: "الدولة",
               onText: (value) {},
             ).withPadding(const EdgeInsets.only(top: 20)),
-            RegisterNumber(
+            RegisterEmail(
               placeHolder: "Email",
               onText: (value) {},
             ).withPadding(const EdgeInsets.only(top: 20)),

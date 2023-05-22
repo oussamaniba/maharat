@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:maharat/core/utils/sizespec_utils.dart';
 
-class RegisterNumber extends StatefulWidget {
+class RegisterEmail extends StatefulWidget {
   final String placeHolder;
   final Function(String value) onText;
 
-  const RegisterNumber({
+  const RegisterEmail({
     required this.placeHolder,
     required this.onText,
     super.key,
   });
 
   @override
-  State<RegisterNumber> createState() => _RegisterNumberState();
+  State<RegisterEmail> createState() => _RegisterEmailState();
 }
 
-class _RegisterNumberState extends State<RegisterNumber> {
+class _RegisterEmailState extends State<RegisterEmail> {
   @override
   Widget build(BuildContext context) {
     return Container(

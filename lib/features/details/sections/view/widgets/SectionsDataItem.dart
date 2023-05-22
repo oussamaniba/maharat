@@ -14,42 +14,69 @@ class SectionssDataItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 250,
-      width: 200,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        color: Colors.blue[100],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: Text(
-              data.name!.replaceAll(" .. ", "\n"),
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
+    return Material(
+      color: Colors.transparent,
+      shape: const CircleBorder(),
+      child: Container(
+        width: 150,
+        height: 170,
+        decoration: const BoxDecoration(
+          color: Colors.transparent,
+        ),
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white,
+                image: DecorationImage(
+                  image: NetworkImage(data.avatar!),
+                  fit: BoxFit.contain,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    offset: const Offset(0.5, .5),
+                    blurRadius: 3,
+                    color: Colors.grey[300]!,
+                    blurStyle: BlurStyle.outer,
+                  ),
+                ],
               ),
             ),
-          ),
-          SizedBox(
-            width: 80,
-            height: 100,
-            child: Image.network(
-              data.avatar!,
-            ).withPadding(
-              const EdgeInsets.symmetric(horizontal: 20).copyWith(left: 0),
+            Positioned(
+              bottom: 0,
+              child: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+                  return ClipPath(
+                    child: Container(
+                      height: 30,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        color: const Color(0xE0FD4FD1),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Center(
+                        child: Text(
+                          data.name!.replaceAll(" .. ", "\n"),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
-          ),
-        ],
-      ).withPadding(const EdgeInsets.symmetric(horizontal: 20)).clickable(
-            radius: BorderRadius.circular(20),
-            onTap: () => onTap(data),
-          ),
+          ],
+        ),
+      ).clickable(
+        radius: BorderRadius.circular(150),
+        splashColor: Colors.transparent,
+        onTap: () => onTap(data),
+      ),
     );
   }
 }

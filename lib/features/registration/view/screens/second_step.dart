@@ -5,7 +5,7 @@ import 'package:maharat/core/extensions/widget_extensions.dart';
 import 'package:maharat/core/utils/sizespec_utils.dart';
 import 'package:maharat/features/_commons/widgets/CommonButton.dart';
 import 'package:maharat/features/registration/models/TypeChoiceItems.dart';
-import 'package:maharat/features/registration/view/widgets/RegisterDropDown.dart';
+import 'package:maharat/features/registration/view/widgets/RegisterAge.dart';
 import 'package:maharat/features/registration/view/widgets/RegisterSimpleText.dart';
 import 'package:maharat/features/registration/view/widgets/TypeChoice.dart';
 
@@ -27,7 +27,7 @@ class SecondStepScreen extends StatelessWidget {
               placeHolder: "اسم الطفل",
               onText: (v) {},
             ).withPadding(const EdgeInsets.only(top: 20)),
-            RegisterDropDown(
+            RegisterAge(
               placeHolder: "سن الطفل",
               onText: (value) {},
             ).withPadding(const EdgeInsets.only(top: 20)),

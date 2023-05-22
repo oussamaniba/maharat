@@ -20,8 +20,6 @@ class SectionsDetailItem extends StatelessWidget {
       child: Container(
         width: 150,
         height: 170,
-        // padding: const EdgeInsets.all(5),
-        // margin: const EdgeInsets.all(2),
         decoration: const BoxDecoration(
           color: Colors.transparent,
         ),
@@ -75,38 +73,6 @@ class SectionsDetailItem extends StatelessWidget {
             ),
           ],
         ),
-        // child: Container(
-        //   decoration: BoxDecoration(
-        //     shape: BoxShape.circle,
-        //     color: Colors.white,
-        //     image: DecorationImage(
-        //       image: NetworkImage(data.avatar!),
-        //       fit: BoxFit.fitWidth,
-        //     ),
-        //   ),
-        //   child: Align(
-        //     alignment: Alignment.bottomCenter,
-        //     child: ClipPath(
-        //       clipper: OvalBottomBorderClipper(),
-        //       child: Container(
-        //         height: 50,
-        //         width: SizeSpec.of(context).width,
-        //         decoration: const BoxDecoration(
-        //           color: Colors.white,
-        //         ),
-        //         alignment: Alignment.center,
-        // child: Text(
-        //   data.name!,
-        //   style: const TextStyle(
-        //     color: Colors.black,
-        //     fontSize: 14.0,
-        //     fontWeight: FontWeight.bold,
-        //   ),
-        // ),
-        //       ),
-        //     ),
-        //   ),
-        // ),
       ).clickable(
         onTap: () => onTap(data),
         radius: BorderRadius.circular(140),

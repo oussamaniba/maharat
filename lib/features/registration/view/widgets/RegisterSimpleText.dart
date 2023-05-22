@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:maharat/core/utils/sizespec_utils.dart';
 
 class RegisterSimpleText extends StatefulWidget {
@@ -35,10 +34,7 @@ class _RegisterSimpleTextState extends State<RegisterSimpleText> {
       child: TextFormField(
         onChanged: widget.onText,
         textDirection: TextDirection.rtl,
-        keyboardType: TextInputType.number,
-        inputFormatters: <TextInputFormatter>[
-          FilteringTextInputFormatter.digitsOnly
-        ],
+        keyboardType: TextInputType.text,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: widget.placeHolder,

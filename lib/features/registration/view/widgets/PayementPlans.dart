@@ -58,7 +58,7 @@ class _PaymentPlanItem extends StatelessWidget {
         Expanded(
           child: Container(
             height: 200,
-            width: 150,
+            width: 300,
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: Colors.orange[300],
