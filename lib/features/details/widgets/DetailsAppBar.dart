@@ -16,7 +16,7 @@ class DetailsAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: SizeSpec.of(context).width,
-      height: 100.0,
+      height: 70.0,
       color: const Color(0x9BC9D7DD),
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -36,6 +36,7 @@ class DetailsAppBar extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: onBack,
+                  padding: EdgeInsets.zero,
                   icon: SvgPicture.asset(
                     "lib/core/assets/back.svg",
                   ),

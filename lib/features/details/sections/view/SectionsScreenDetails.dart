@@ -55,35 +55,33 @@ class SectionsScreenDetails extends StackedView<SectionsDetailsViewModel> {
         ),
         falseBuilder: () => Conditioned.boolean(
           viewModel.section != null && viewModel.section?.data != null,
-          trueBuilder: () => Directionality(
-            textDirection: TextDirection.rtl,
-            child: GridView.builder(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 30,
-                vertical: 10,
-              ).copyWith(bottom: 20),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 5,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                mainAxisExtent: 150,
+          trueBuilder: () => SizedBox(
+            width: SizeSpec.of(context).width,
+            child: Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
+              alignment: WrapAlignment.center,
+              runAlignment: WrapAlignment.center,
+              direction: Axis.horizontal,
+              textDirection: TextDirection.rtl,
+              spacing: 20,
+              runSpacing: 20,
+              children: List.generate(
+                viewModel.section!.data!.length,
+                (index) {
+                  SectionsDataResponse sectionItem = viewModel.section!.data![index];
+                  return SectionsDetailItem(
+                    data: sectionItem,
+                    onTap: (d) {
+                      getIt<AppRoutes>().push(SectionsRouteTest(
+                        sectionId: selectedId.toString(),
+                        allData: viewModel.section?.data ?? [],
+                        selectedIndex: index,
+                      ));
+                    },
+                  );
+                },
               ),
-              itemCount: viewModel.section!.data!.length,
-              itemBuilder: (BuildContext context, int index) {
-                SectionsDataResponse sectionItem =
-                    viewModel.section!.data![index];
-                return SectionsDetailItem(
-                  data: sectionItem,
-                  onTap: (d) {
-                    getIt<AppRoutes>().push(SectionsRouteTest(
-                      sectionId: selectedId.toString(),
-                      allData: viewModel.section?.data ?? [],
-                      selectedIndex: index,
-                    ));
-                  },
-                );
-              },
-            ).withPadding(const EdgeInsets.only(top: 30)),
+            ).withPadding(const EdgeInsets.symmetric(horizontal: 30, vertical: 40)).toScrollable(),
           ),
           falseBuilder: () => const Center(
             child: Text("No Data"),
@@ -103,8 +101,7 @@ class SectionsScreenDetails extends StackedView<SectionsDetailsViewModel> {
 
   @override
   void onViewModelReady(SectionsDetailsViewModel viewModel) async {
-    await viewModel
-        .initializeSections(data.data!.firstWhere((s) => s.id == selectedId));
+    await viewModel.initializeSections(data.data!.firstWhere((s) => s.id == selectedId));
     super.onViewModelReady(viewModel);
   }
 }

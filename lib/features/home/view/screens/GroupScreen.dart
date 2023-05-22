@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:conditioned/conditioned.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:maharat/core/extensions/widget_extensions.dart';
 import 'package:maharat/core/utils/global_functions.dart';
 import 'package:maharat/core/utils/sizespec_utils.dart';
@@ -44,51 +45,49 @@ class GroupScreen extends ViewModelWidget<HomeViewModel> {
           flexibleSpace: const HomeTopBar(),
           // collapsedHeight: SizeSpec.of(context).height * .3,
         ),
-        SliverList.list(
-          children: [
-            HomeWrapper(
-              child: Conditioned.boolean(
-                viewModel.isLoading,
-                trueBuilder: () => SizedBox(
-                  height: SizeSpec.of(context).height * .3,
-                  child: const Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  ),
-                ),
-                falseBuilder: () => Conditioned.boolean(
-                  viewModel.programs != null && viewModel.programs?.data != null,
-                  trueBuilder: () => Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: GridView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 30,
-                      ).copyWith(bottom: 20),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4,
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10,
-                        mainAxisExtent: 100,
-                      ),
-                      itemCount: viewModel.programs!.data!.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        ProgramsDataResponse data = viewModel.programs!.data![index];
-                        return _CategoriesGridItem(
-                          data: data,
-                          onTap: onTap,
-                        );
-                      },
-                    ),
-                  ),
-                  falseBuilder: () => const Center(
-                    child: Text("No Data"),
-                  ),
+        SliverList.list(children: [
+          HomeWrapper(
+            child: Conditioned.boolean(
+              viewModel.isLoading,
+              trueBuilder: () => SizedBox(
+                height: SizeSpec.of(context).height * .3,
+                child: const Center(
+                  child: CircularProgressIndicator.adaptive(),
                 ),
               ),
-            )
-          ]
-        ),
+              falseBuilder: () => Conditioned.boolean(
+                viewModel.programs != null && viewModel.programs?.data != null,
+                trueBuilder: () => Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
+                    ).copyWith(bottom: 20),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      mainAxisExtent: 80,
+                    ),
+                    itemCount: viewModel.programs!.data!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      ProgramsDataResponse data = viewModel.programs!.data![index];
+                      return _CategoriesGridItem(
+                        data: data,
+                        onTap: onTap,
+                      );
+                    },
+                  ),
+                ),
+                falseBuilder: () => const Center(
+                  child: Text("No Data"),
+                ),
+              ),
+            ),
+          )
+        ]),
       ],
     );
   }
@@ -106,7 +105,7 @@ class _CategoriesGridItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
+      height: 170,
       width: 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
@@ -115,22 +114,23 @@ class _CategoriesGridItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
+          const Expanded(
             child: Text(
-              data.name!,
+              "السؤال",
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
-                fontSize: 18,
+                fontSize: 13,
               ),
             ),
           ),
-          Image.network(
-            data.avatar!,
-          ).withPadding(
-              const EdgeInsets.symmetric(vertical: 20).copyWith(left: 10)),
+          SvgPicture.asset(
+            "lib/core/assets/bird_fruit.svg",
+            height: 40,
+            width: 40,
+          ).withPadding(const EdgeInsets.symmetric(vertical: 20)),
         ],
       ).withPadding(const EdgeInsets.symmetric(horizontal: 10)).clickable(
             radius: BorderRadius.circular(20),

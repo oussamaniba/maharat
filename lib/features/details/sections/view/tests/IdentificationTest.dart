@@ -27,10 +27,10 @@ class _IdentificationTestState extends State<IdentificationTest> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: SizeSpec.of(context).height * .7,
       width: SizeSpec.of(context).width,
       child: HorizontalListWheelScrollView(
-        itemExtent: 250.0,
+        itemExtent: 400.0,
         itemCount: widget.data.program?.images?.length ?? 0,
         controller: FixedExtentScrollController(initialItem: 0),
         onSelectedItemChanged: updateSelectedIndex,

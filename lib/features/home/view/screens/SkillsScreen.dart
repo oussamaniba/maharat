@@ -21,16 +21,13 @@ class SkillsScreen extends ViewModelWidget<HomeViewModel> {
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     List<Skills> selectedSkills = Skills.skills.where((s) => s.type == skill).toList();
-    return CustomScrollView(
-      shrinkWrap: true,
-      slivers: [
+    return CustomScrollView(shrinkWrap: true, slivers: [
       SliverAppBar(
         floating: true,
         backgroundColor: Colors.transparent,
         expandedHeight: SizeSpec.of(context).height * .3,
         leading: IconButton(
-          onPressed: () {
-          },
+          onPressed: () {},
           icon: const Icon(Icons.more_vert_outlined),
           color: Colors.orange,
         ),
@@ -46,31 +43,30 @@ class SkillsScreen extends ViewModelWidget<HomeViewModel> {
       ),
       SliverList.list(
         children: [
-            HomeWrapper(
-              child: Directionality(
-                textDirection: TextDirection.rtl,
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30,
-                  ).copyWith(bottom: 20),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                    mainAxisExtent: 100,
-                  ),
-                  itemCount: selectedSkills.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return _SkillsGridItem(data: selectedSkills[index]);
-                  },
+          HomeWrapper(
+            child: Directionality(
+              textDirection: TextDirection.rtl,
+              child: GridView.builder(
+                shrinkWrap: true,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30,
+                ).copyWith(bottom: 20),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  mainAxisExtent: 80,
                 ),
+                itemCount: selectedSkills.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return _SkillsGridItem(data: selectedSkills[index]);
+                },
               ),
             ),
-          ],
-        ),
-      ]
-    );
+          ),
+        ],
+      ),
+    ]);
   }
 }
 
@@ -105,9 +101,9 @@ class _SkillsGridItem extends StatelessWidget {
           ),
           SvgPicture.asset(
             "lib/core/assets/bird_fruit.svg",
-            height: 80,
-            width: 80,
-          ).withPadding(const EdgeInsets.only(left: 00)),
+            height: 40,
+            width: 40,
+          ).withPadding(const EdgeInsets.symmetric(vertical: 10)),
         ],
       ).withPadding(const EdgeInsets.symmetric(horizontal: 10)).clickable(
             radius: BorderRadius.circular(20),

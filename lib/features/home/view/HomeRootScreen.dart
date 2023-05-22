@@ -32,7 +32,7 @@ class HomeRootScreen extends stacked.StackedView<HomeViewModel> {
         return true;
       },
       child: AutoTabsScaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color(0xFFf4f6f8),
         homeIndex: 3,
         extendBodyBehindAppBar: true,
         routes: [

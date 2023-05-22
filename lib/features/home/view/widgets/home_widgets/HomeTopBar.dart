@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:maharat/core/extensions/widget_extensions.dart';
-import 'package:maharat/core/utils/global_functions.dart';
 import 'package:maharat/core/utils/sizespec_utils.dart';
 
 class HomeTopBar extends StatelessWidget {

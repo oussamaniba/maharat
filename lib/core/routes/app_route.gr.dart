@@ -15,7 +15,7 @@ import 'package:maharat/features/_commons/data/remote/response/ProgramsDataRespo
     as _i23;
 import 'package:maharat/features/_commons/data/remote/response/SectionsDataResponse.dart'
     as _i25;
-import 'package:maharat/features/aboutus/AboutUsScreen.dart' as _i1;
+import 'package:maharat/features/general/AboutUsScreen.dart' as _i1;
 import 'package:maharat/features/authentication/view/AuthenticationRootScreen.dart'
     as _i2;
 import 'package:maharat/features/authentication/view/screens/AuthenticationScreen.dart'
@@ -48,7 +48,7 @@ import 'package:maharat/features/registration/view/screens/second_step.dart'
 import 'package:maharat/features/registration/view/screens/third_step.dart'
     as _i18;
 import 'package:maharat/features/settings/view/SettingScreen.dart' as _i19;
-import 'package:maharat/features/termsandconditions/TermsAndConditions.dart'
+import 'package:maharat/features/general/TermsAndConditions.dart'
     as _i20;
 
 abstract class $AppRoutes extends _i21.RootStackRouter {

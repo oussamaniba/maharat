@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:maharat/core/di/injectable.dart';
 import 'package:maharat/core/routes/app_route.dart';
+import 'package:wakelock/wakelock.dart';
 
 void main() async {
   await initConfigurations();
@@ -10,6 +11,7 @@ void main() async {
 Future<void> initConfigurations() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureInjectable(Env.prod);
+  await Wakelock.enable();
   runApp(MyApp());
 }
 

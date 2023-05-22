@@ -43,6 +43,7 @@ dependencies:
   flutter_custom_clippers: ^2.1.0
   expandable_page_view: ^1.0.17
   banner_carousel: ^1.2.1
+  wakelock: ^0.6.2
 
 dev_dependencies:
   flutter_test:

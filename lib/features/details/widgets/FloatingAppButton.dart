@@ -23,7 +23,7 @@ class FloatingAppButton extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            height: 50,
+            height: 40,
             padding: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
               color: const Color(0xFFfba29c),
@@ -57,7 +57,7 @@ class FloatingAppButton extends StatelessWidget {
           if (right != null) ...[
             const SizedBox(width: 30),
             Container(
-              height: 50,
+              height: 40,
               padding: const EdgeInsets.symmetric(horizontal: 10),
               decoration: BoxDecoration(
                 color: const Color(0xFFfba29c),

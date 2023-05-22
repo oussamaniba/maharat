@@ -19,56 +19,58 @@ class SettingScreen extends StackedView<SettingViewModel> {
 
   @override
   Widget builder(BuildContext context, SettingViewModel viewModel, Widget? child) {
-    return SafeArea(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          SettingAppBar(
-            onBackPress: () {
-              // TODO: implement pop Action
-            },
-          ),
-          Container(
-            height: 160,
-            width: MediaQuery.of(context).size.width / 2,
-            padding: const EdgeInsets.all(32),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text("الصوت"),
-                      GestureDetector(
-                        onTap: () {},
-                        child: SvgPicture.asset("assets/sound.svg"),
-                      ),
-                    ],
-                  ),
-                ),
-                const Expanded(
-                  child: VerticalDivider(
-                    color: Colors.grey,
-                    width: 5,
-                  ),
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      const Text("استقبال الاشعارات"),
-                      Switch(
-                        value: true,
-                        onChanged: (value) {},
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            SettingAppBar(
+              onBackPress: () {
+                // TODO: implement pop Action
+              },
             ),
-          ),
-        ],
+            Container(
+              height: 160,
+              width: MediaQuery.of(context).size.width / 2,
+              padding: const EdgeInsets.all(32),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Text("الصوت"),
+                        GestureDetector(
+                          onTap: () {},
+                          child: SvgPicture.asset("lib/core/assets/sound.svg"),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Expanded(
+                    child: VerticalDivider(
+                      color: Colors.grey,
+                      width: 5,
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        const Text("استقبال الاشعارات"),
+                        Switch(
+                          value: true,
+                          onChanged: (value) {},
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

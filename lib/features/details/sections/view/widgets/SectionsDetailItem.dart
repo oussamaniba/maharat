@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:maharat/core/extensions/widget_extensions.dart';
-import 'package:maharat/core/utils/sizespec_utils.dart';
 import 'package:maharat/features/_commons/data/remote/response/SectionsDataResponse.dart';
 
 class SectionsDetailItem extends StatelessWidget {
@@ -19,52 +18,95 @@ class SectionsDetailItem extends StatelessWidget {
       color: Colors.transparent,
       shape: const CircleBorder(),
       child: Container(
-        padding: const EdgeInsets.all(5),
-        margin: const EdgeInsets.all(2),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              offset: const Offset(0.5, .5),
-              blurRadius: 3,
-              color: Colors.grey[300]!,
-              blurStyle: BlurStyle.outer,
-            )
-          ],
+        width: 150,
+        height: 170,
+        // padding: const EdgeInsets.all(5),
+        // margin: const EdgeInsets.all(2),
+        decoration: const BoxDecoration(
+          color: Colors.transparent,
         ),
-        child: Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.white,
-            image: DecorationImage(
-              image: NetworkImage(data.avatar!),
-              fit: BoxFit.fill,
-            ),
-          ),
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: ClipPath(
-              clipper: OvalBottomBorderClipper(),
-              child: Container(
-                height: 50,
-                width: SizeSpec.of(context).width,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white,
+                image: DecorationImage(
+                  image: NetworkImage(data.avatar!),
+                  fit: BoxFit.fitWidth,
                 ),
-                alignment: Alignment.center,
-                child: Text(
-                  data.name!,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.bold,
+                boxShadow: [
+                  BoxShadow(
+                    offset: const Offset(0.5, .5),
+                    blurRadius: 3,
+                    color: Colors.grey[300]!,
+                    blurStyle: BlurStyle.outer,
                   ),
-                ),
+                ],
               ),
             ),
-          ),
+            Positioned(
+              bottom: 0,
+              child: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+                  return ClipPath(
+                    // clipper: SideCutClipper(),
+                    child: Container(
+                      height: 30,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        color: const Color(0xE0FD4FD1),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Center(
+                        child: Text(
+                          data.name!,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
+        // child: Container(
+        //   decoration: BoxDecoration(
+        //     shape: BoxShape.circle,
+        //     color: Colors.white,
+        //     image: DecorationImage(
+        //       image: NetworkImage(data.avatar!),
+        //       fit: BoxFit.fitWidth,
+        //     ),
+        //   ),
+        //   child: Align(
+        //     alignment: Alignment.bottomCenter,
+        //     child: ClipPath(
+        //       clipper: OvalBottomBorderClipper(),
+        //       child: Container(
+        //         height: 50,
+        //         width: SizeSpec.of(context).width,
+        //         decoration: const BoxDecoration(
+        //           color: Colors.white,
+        //         ),
+        //         alignment: Alignment.center,
+        // child: Text(
+        //   data.name!,
+        //   style: const TextStyle(
+        //     color: Colors.black,
+        //     fontSize: 14.0,
+        //     fontWeight: FontWeight.bold,
+        //   ),
+        // ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
       ).clickable(
         onTap: () => onTap(data),
         radius: BorderRadius.circular(140),
@@ -81,10 +123,8 @@ class OvalBottomBorderClipper extends CustomClipper<Path> {
     var path = Path();
     path.lineTo(0, 0);
     path.lineTo(0, size.height - 40);
-    path.quadraticBezierTo(
-        size.width / 4, size.height, size.width / 2, size.height);
-    path.quadraticBezierTo(
-        size.width - size.width / 4, size.height, size.width, size.height - 40);
+    path.quadraticBezierTo(size.width / 4, size.height, size.width / 2, size.height);
+    path.quadraticBezierTo(size.width - size.width / 4, size.height, size.width, size.height - 40);
     path.lineTo(size.width, 0);
     path.lineTo(0, 0);
     return path;
