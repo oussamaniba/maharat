@@ -93,6 +93,10 @@ class AppRoutes extends $AppRoutes {
         page: TermsAndConditions.page,
         path: "/terms",
       ),
+      AutoRoute(
+        page: ContactUsRoute.page,
+        path: "/contactUs",
+      ),
     ];
   }
 }
