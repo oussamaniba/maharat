@@ -3,16 +3,18 @@ import 'package:flutter_svg/svg.dart';
 
 class SettingAppBar extends StatelessWidget {
   final Function() onBackPress;
+  final String title;
   const SettingAppBar({
     super.key,
     required this.onBackPress,
+    required this.title,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xffEDF4F8),
-      height: 130,
+      height: 100,
       width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
@@ -28,18 +30,6 @@ class SettingAppBar extends StatelessWidget {
               color: Colors.orange,
             ),
           ),
-          // Expanded(
-          //   child: Conditioned.boolean(
-          //     item.image.endsWith(".svg"),
-          //     trueBuilder: () => SvgPicture.asset(
-          //       item.image,
-          //     ),
-          //     falseBuilder: () => Icon(
-          //       Icons.error,
-          //       color: Colors.red,
-          //     ),
-          //   ),
-          // ),
           Expanded(
             flex: 1,
             child: GestureDetector(
@@ -52,12 +42,12 @@ class SettingAppBar extends StatelessWidget {
             flex: 10,
             child: Container(),
           ),
-          const Expanded(
+          Expanded(
             flex: 2,
             child: Text(
-              "الاعدادات",
+              title,
               textDirection: TextDirection.rtl,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontSize: 20,
               ),

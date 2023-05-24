@@ -18,7 +18,8 @@ class SettingScreen extends StackedView<SettingViewModel> {
   }
 
   @override
-  Widget builder(BuildContext context, SettingViewModel viewModel, Widget? child) {
+  Widget builder(
+      BuildContext context, SettingViewModel viewModel, Widget? child) {
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -28,6 +29,7 @@ class SettingScreen extends StackedView<SettingViewModel> {
               onBackPress: () {
                 // TODO: implement pop Action
               },
+              title: 'الاعدادات',
             ),
             Container(
               height: 160,
